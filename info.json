@@ -1,0 +1,10 @@
+{
+    "name" : "TODO Plugin Name",
+    "slug" : "TODO-plugin-slug",
+    "download_url" : "http://www.tammyorrtech.com/files/TODO-plugin-slug/TODO-plugin-slug.zip",
+    "version" : "0.0.1",
+    "author" : "Tammy Orr",
+    "sections" : {
+        "description" : "TODO description with sentences."
+    }
+}

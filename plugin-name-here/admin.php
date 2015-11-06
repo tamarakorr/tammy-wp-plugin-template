@@ -12,10 +12,37 @@ class todo_admin {
 
   function add_admin_menu(  ) { 
 
-    // TODO
+    // TODO - create an options page or a menu
     add_options_page( '[TODO Plugin Name Here]', '[TODO Plugin Name Here]',
       'manage_options', 'plugin_name_here', array($this, 'options_page') );
 
+    // This is the main item for the menu
+    add_menu_page('TODO Plugin Name', //page title
+    'TODO Plugin Name', //menu title
+    'manage_options', //capabilities
+    'todo_menu_slug', //menu slug
+    todo_plugin_slug_function //function
+    );
+
+    // This is a submenu
+    add_submenu_page('todo_menu_slug', //parent slug
+    'Add New TODO Thing Here', //page title
+    'Add New TODO', //menu title
+    'manage_options', //capability
+    'todo_menu_slug_create', //menu slug
+    'todo_plugin_slug_create'); //function
+
+    // HIDDEN submenu, however, we need to add it anyways
+    add_submenu_page(null, //parent slug
+    'Edit TODO Thing Here', //page title
+    'Edit TODO', //menu title
+    'manage_options', //capability
+    'todo_menu_slug_edit', //menu slug
+    'todo_plugin_slug_edit'); //function
+
+    require_once( plugin_dir_path( __FILE__ ) . 'TODO-list.php' );
+    require_once( plugin_dir_path( __FILE__ ) . 'TODO-create.php' );
+    require_once( plugin_dir_path( __FILE__ ) . 'TODO-edit.php' );
   }
 
   static function settings_get_defaults() {
